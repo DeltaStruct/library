@@ -7,6 +7,9 @@
 #include "../assets/concepts.hpp"
 #include "../assets/undefined.hpp"
 
+template<typename T>
+struct cumulative_sum;
+
 template<can_add_sub T>
 struct cumulative_sum {
   using iterator = std::vector<T>::iterator;
@@ -17,7 +20,8 @@ struct cumulative_sum {
   cumulative_sum(std::size_t n,T x) : dp(n+1,x) {}
   cumulative_sum(std::vector<T>& A) : dp(1) { for (T& a:A) dp.emplace_back(dp.back()+a); }
   T operator[](std::size_t x){ return dp[x+1]-dp[x]; }
-  T operator[](range x){ return dp[x.r]-dp[x.l]; }
+  template<is_integer U>
+  T operator[](range<U> x){ return dp[x.r]-dp[x.l]; }
   T operator[](all_range x){ return dp.back(); }
   T& operator()(std::size_t x){ return dp[x]; }
   std::size_t size(){ return dp.size()-1; }
@@ -35,9 +39,13 @@ struct cumulative_sum {
     dp.resize(A.size()+1);
     for (int i(1);i < (int)dp.size();++i) dp[i] = A[i-1]+dp[i-1];
   }
+  void _output(){
+    for (T a:dp) std::cout << a << ' ';
+    std::cout << std::endl;
+  }
 };
 
-template<can_add T>
+template<can_add T> requires (!can_add_sub<T>)
 struct cumulative_sum {
   using iterator = std::vector<T>::iterator;
   using const_iterator = std::vector<T>::const_iterator;
@@ -47,7 +55,8 @@ struct cumulative_sum {
   cumulative_sum(std::size_t n,T x) : dp(n+1,x),val(n,x) {}
   cumulative_sum(std::vector<T>& A) : dp(1),val(A) { for (T& a:A) dp.emplace_back(dp.back()+a); }
   T operator[](std::size_t x){ return A[x]; }
-  unable_operation(T,operator[],range)
+  template<typename U>
+  unable_operation(T,operator[],range<U>)
   T operator[](all_range x){ return dp.back(); }
   T& operator()(std::size_t x){ return dp[x]; }
   std::size_t size(){ return dp.size()-1; }
@@ -67,7 +76,14 @@ struct cumulative_sum {
     dp.resize(A.size()+1);
     for (int i(1);i < (int)dp.size();++i) dp[i] = A[i-1]+dp[i-1];
   }
+  void _output(){
+    for (T a:dp) std::cout << a << ' ';
+    std::cout << std::endl;
+  }
 };
+
+template<typename T>
+cumulative_sum(std::vector<T>) -> cumulative_sum<T>;
 
 template<typename T>
 using csum = cumulative_sum<T>;

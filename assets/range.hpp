@@ -14,19 +14,19 @@ struct range {
   T l,r;
   [[function_undefined(C++23?)]]
   template<can_get_begin_end_iterator T>
-  auto operator()(T& x) -> iterator_range<decltype(begin(T))> {
-    return iterator_range<decltype(begin(T))>{x.begin(),x.end()};
+  auto operator()(U& x) -> iterator_range<decltype(std::begin(x))> {
+    return iterator_range<decltype(std::begin(x))>{std::begin(x),std::end(x)};
   }
 };
 
 struct all_range {};
 
 #define _OVERLOAD(a1,a2,a3,macro,...) macro
-#define _2(l,r) (range_object{l,r})
+#define _2(l,r) (range{l,r})
 #define _0() (all_range{})
-#define _1(A) begin(A),end(A)
-#define _3(A,l,r) (begin(A)+l),(begin(A)+r)
-#define _(...) _OVERLOAD()(__VA_ARGS__,_3,_2,_1,_0)(__VA_ARGS__)
-#define _ (all_range{})
+#define _1(A) std::begin(A),std::end(A)
+#define _3(A,l,r) (std::begin(A)+l),(std::begin(A)+r)
+#define _(...) _OVERLOAD(__VA_ARGS__,_3,_2,_1,_0)(__VA_ARGS__)
+//#define _ (all_range{})
 
 #endif
