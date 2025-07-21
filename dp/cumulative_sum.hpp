@@ -1,3 +1,8 @@
+#ifndef DELTASTRUCT_LIBRARY_DP_CUMULATIVE_SUM
+#define DELTASTRUCT_LIBRARY_DP_CUMULATIVE_SUM 1
+
+#include <vector>
+
 #include "../assets/range.hpp"
 #include "../assets/concepts.hpp"
 #include "../assets/undefined.hpp"
@@ -66,3 +71,5 @@ struct cumulative_sum {
 
 template<typename T>
 using csum = cumulative_sum<T>;
+
+#endif

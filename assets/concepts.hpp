@@ -1,4 +1,6 @@
-#pragma once
+#ifndef DELTASTRUCT_LIBRARY_ASSETS_CONCEPTS
+#define DELTASTRUCT_LIBRARY_ASSETS_CONCEPTS 1
+
 #include <concepts>
 #include <iterator>
 
@@ -18,3 +20,5 @@ template<typename T>
 concept can_add_sub = requires(T& x,T& y){ x + y; x - y; x = y; };
 template<typename T>
 concept can_add = requires(T& x,T& y){ x + y; x = y; };
+
+#endif

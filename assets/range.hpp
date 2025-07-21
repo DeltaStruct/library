@@ -1,3 +1,6 @@
+#ifndef DELTASTRUCT_LIBRARY_ASSETS_RANGE
+#define DELTASTRUCT_LIBRARY_ASSETS_RANGE 1
+
 #include "concepts.hpp"
 #include "undefined.hpp"
 
@@ -25,3 +28,5 @@ struct all_range {};
 #define _3(A,l,r) (begin(A)+l),(begin(A)+r)
 #define _(...) _OVERLOAD()(__VA_ARGS__,_3,_2,_1,_0)(__VA_ARGS__)
 #define _ (all_range{})
+
+#endif
