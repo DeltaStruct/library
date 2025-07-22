@@ -12,8 +12,8 @@ struct [[class_undefined(C++23?)]] iterator_range {
 template<is_integer T>
 struct range {
   T l,r;
-  [[function_undefined(C++23?)]]
   template<can_get_begin_end_iterator U>
+  [[function_undefined(C++23?)]]
   auto operator()(U& x) -> iterator_range<decltype(std::begin(x))> {
     return iterator_range<decltype(std::begin(x))>{std::begin(x),std::end(x)};
   }

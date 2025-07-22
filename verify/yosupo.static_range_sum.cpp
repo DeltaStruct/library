@@ -1,4 +1,4 @@
-// PROBLEM https://judge.yosupo.jp/problem/static_range_sum
+// competitive-verifier: PROBLEM https://judge.yosupo.jp/problem/static_range_sum
 
 #include "../dp/cumulative_sum.hpp"
 #include <bits/stdc++.h>
