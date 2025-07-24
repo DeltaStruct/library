@@ -1,6 +1,8 @@
 #ifndef DELTASTRUCT_LIBRARY_ASSETS_UNDEFINED
 #define DELTASTRUCT_LIBRARY_ASSETS_UNDEFINED 1
 
+#include "io.hpp"
+
 #include <iostream>
 
 #define class_undefined(additional) deprecated("This class hasn't been implemented yet." #additional)

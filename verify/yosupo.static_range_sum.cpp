@@ -1,6 +1,8 @@
 // competitive-verifier: PROBLEM https://judge.yosupo.jp/problem/static_range_sum
 
 #include "../dp/cumulative_sum.hpp"
+#include "../assets/template.hpp"
+
 #include <bits/stdc++.h>
 using namespace std;
 

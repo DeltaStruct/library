@@ -2,10 +2,9 @@
 #define DELTASTRUCT_LIBRARY_DP_CUMULATIVE_SUM 1
 
 #include <vector>
+#include <iostream>
 
-#include "../assets/range.hpp"
-#include "../assets/concepts.hpp"
-#include "../assets/undefined.hpp"
+#include "../assets/template.hpp"
 
 template<typename T>
 struct cumulative_sum;
