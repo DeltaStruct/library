@@ -1,4 +1,4 @@
-// competitive-verifier: PROBLEM https://judge.yosupo.jp/problem/many_aplusb
+// competitive-verifier: PROBLEM https://judge.yosupo.jp/problem/aplusb
 
 #include "../assets/template.hpp"
 
